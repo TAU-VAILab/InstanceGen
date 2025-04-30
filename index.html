@@ -1,0 +1,629 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Indie Flower' rel='stylesheet'>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="xdvJxvo39Ei0nahgmgXGp9DCslFea8wH789x6mmAY-A" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	
+
+    <meta property="og:site_name" content="InstanceGen" />
+    <meta property="og:type" content="video.other" />
+    <meta property="og:title" content="InstanceGen: Image Generation with Instance-level Instructions" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="https://tau-vailab.github.io/InstanceGen/" />
+    <meta property="og:image" content="https://tau-vailab.github.io/Spice-E/webpage_assets/images/page_teaser.png" />
+
+    <meta property="article:publisher" content="https://tau-vailab.github.io/InstanceGen/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="InstanceGen: Image Generation with Instance-level Instructions" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:url" content="https://tau-vailab.github.io/InstanceGen/" />
+    <meta name="twitter:image" content="https://tau-vailab.github.io/Spice-E/webpage_assets/images/page_teaser.png" />
+
+    <title>InstanceGen: Image Generation with Instance-level Instructions</title>
+<!--    <link rel="icon" href="../pics/wis_logo.jpg">-->
+    <link rel="icon" href="./webpage_assets/images/icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="page-container">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- title -->
+    <h1 class="ourh1" align="center"><color_obj>Inst</color_obj><color_inst>ance</color_inst><color_pos>Gen</color_pos></h1>
+    <h2 class="ourh2" align="center">Image Generation with Instance-level Instructions</h2>
+	<h5 class="conference" align="center">SIGGRAPH 2025 (Conference Proceedings)</h5>
+	
+    <!-- authors and affiliations -->
+    <section class="authors_block">
+        <div class="authors" align="center">
+            <span class="author-block"><a href="https://etaisella.github.io/" target="_blank">Etai Sella</a><sup>1,2</sup>,</span>
+            <span class="author-block"><a href="https://www.yanirk.com/" target="_blank">Yanir Kleiman</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://www.hadarelor.com/" target="_blank">Hadar Averbuch-Elor</a><sup>1,3</sup></span>
+        </div>
+
+		<div class="affiliations" align="center">
+            <span class="author-block"><sup>1</sup>Tel Aviv University, </span>
+            <span class="author-block"><sup>2</sup>Meta AI, </span>
+			<span class="author-block"><sup>3</sup>Cornell University</span>
+        </div>
+    </section>
+
+	<!-- authors and affiliations -->
+    <!-- link buttons -->
+    <div class="column has-text-centered">
+        <div class="publication-links" align="center">
+
+          <!-- arxiv link -->
+          <span class="link-block">
+            <a href="http://arxiv.org/abs/2311.17834" class="paper-link" style="display: inline-block">
+                <button class="button">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </button>
+            </a>
+          </span>
+
+          <!-- Github Link. -->
+          <span class="link-block">
+            <a href="https://github.com/TAU-VAILab/spic-e" style="display: inline-block">
+                <button class="button">
+                    <span class="icon">
+                        <i class="fa fa-github"></i>
+                    </span>
+                    <span>Code (coming soon)</span>
+                  </button>
+            </a>
+          </span>
+
+          <!-- Supp Link. -->
+          <span class="link-block">
+            <a href="supp/index.html" style="display: inline-block">
+                <button class="button">
+                    <span class="icon">
+                        <i class="fa fa-plus-square"></i>
+                    </span>
+                    <span>Supplementary Material</span>
+                  </button>
+            </a>
+          </span>
+        </div>
+    </div>
+
+    <!-- slider -->
+    <!-- Slider main container -->
+    <div class="introvid">
+		<video loop autoplay  muted width="100%"  class="result-video">
+			<source src="webpage_assets/videos/page_animation3.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- intro -->
+    <section class="into-paragraph-section" width="100%">
+        <div class="intro-container has-text-justified">
+            <div class="intro-paragraph">
+                <p>
+                    <br>
+                    <span class="intro-paragraph_bold">TL;DR:</span> We introduce an inference time technique which improves diffusion model's ability to generate images for
+					complex prompts involving <color_obj>multiple objects</color_obj>, <color_inst>intance level attributes</color_inst> and <color_pos>spatial relationships</color_pos>.<br><br>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- abstract -->
+    <section class="abstract-section" width="100%">
+        <div class="abstract-container has-text-justified">
+            <hr>
+            <h2 align="center">Abstract</h2>
+            <p class="has-text-justified">
+                Despite rapid advancements in the capabilities of generative models, pretrained
+				text-to-image models still struggle in capturing the semantics conveyed
+				by complex prompts that compound multiple objects and instance-level
+				attributes. Consequently, we are witnessing growing interests in integrating
+				additional structural constraints, typically in the form of coarse
+				bounding boxes, to better guide the generation process in such challenging
+				cases. In this work, we take the idea of structural guidance a step further by
+				making the observation that contemporary image generation models can directly
+				provide a plausible fine-grained structural initialization. We propose a
+				technique that couples this image-based structural guidance with LLM-based
+				instance-level instructions, yielding output images that adhere to all parts of
+				the text prompt, including object counts, instance-level attributes, and spatial
+				relations between instances. Additionally, we contribute CompoundPrompts,
+				a benchmark composed of complex prompts with three difficulty levels in
+				which object instances are progressively compounded with attribute descriptions
+				and spatial relations. Extensive experiments demonstrate that our
+				method significantly surpasses the performance of prior models, particularly
+				over complex multi-object and multi-attribute use cases.
+            </p>
+<!--            <div class="swipe_vid_container" align="center" width="100%">-->
+<!--                <video loop autoplay muted width="60%"  class="swipe_video">-->
+<!--                    <source src=".\webpage_assets\videos\swipe_mid_qual.mp4" type="video/mp4">-->
+<!--                </video>-->
+<!--            </div>-->
+<!--        </div>-->
+    </section>
+
+    <!-- result-section -->
+	<section class="result-section" width="100%">
+        <div class="swipe-container has-text-justified" align="center">
+            <hr>
+            <h2 align="center">Sample Results</h2><br></br>
+			<div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper" align="center">
+          <!-- Slides -->
+		  <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <table class="slide-table" width="100%" align="center">
+                <tbody>
+                    <tr>
+							<th colspan="3" width="90%" class="result-title" align="center"><color_obj>two guitars</color_obj> and <color_obj>a saxophone</color_obj> 
+							in a music store, <color_pos>the guitar on the right</color_pos> is a <color_inst>white fender</color_inst>, the one on the left is a <color_inst>rickenbacker bass</color_inst></th>
+						</tr>
+						<tr>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/4_two_guitars_emu.png" alt="results">
+							</td>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/layout_w_decisions_guitars.png" alt="results"">
+							</td>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/4_two_guitars_ours.png" alt="results">
+							</td>
+						</tr>
+						<tr>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Initial Image</div>
+							</td>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Instance Assignments</div>
+							</td>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Output</div>
+							</td>
+						</tr>
+                </tbody>
+            </table>
+          </div>
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <table class="slide-table" width="100%" align="center">
+                <tbody>
+                    <tr>
+							<th colspan="3" width="90%" class="result-title" align="center"><color_obj>four action figures</color_obj> on a kid’s shelf, <color_pos>from left to right</color_pos> 
+							they are <color_inst>batman, superman, wolverine and spiderman </color_inst></th>
+						</tr>
+						<tr>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/initial_image_superheros.png" alt="results">
+							</td>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/layout_w_decisions_superheros.png" alt="results"">
+							</td>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/final_image_superheros.png" alt="results">
+							</td>
+						</tr>
+						<tr>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Initial Image</div>
+							</td>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Instance Assignments</div>
+							</td>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Output</div>
+							</td>
+						</tr>
+                </tbody>
+            </table>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <table class="slide-table" width="100%" align="center">
+                <tbody>
+                    <tr>
+							<th colspan="3" width="90%" class="result-title" align="center"><color_obj>a porcupine</color_obj>, <color_obj>a raccoon</color_obj> and <color_obj>a squirrel</color_obj> 
+							in the forest, the squirrel is <color_pos>in the middle</color_pos> <color_inst>holding a nut</color_inst></th>
+						</tr>
+						<tr>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/initial_image_squirrel3.png" alt="results">
+							</td>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/layout_w_decisions_squirrel3.png" alt="results"">
+							</td>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/final_image_squirrel3.png" alt="results">
+							</td>
+						</tr>
+						<tr>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Initial Image</div>
+							</td>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Instance Assignments</div>
+							</td>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Output</div>
+							</td>
+						</tr>
+                </tbody>
+            </table>
+          </div>
+          <!-- Slide 4 -->
+          <div class="swiper-slide">
+            <table class="slide-table" width="100%" align="center">
+                <tbody>
+                    <tr>
+							<th colspan="3" width="90%" class="result-title" align="center"><color_obj>four pillows</color_obj> stacked on top of eachother, <color_pos>from bottom to 
+							top</color_pos> they are <color_inst>pink, tiger pattern, covered in blue velvet and pinstriped</color_inst></th>
+						</tr>
+						<tr>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/initial_image_pillows2.png" alt="results">
+							</td>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/layout_w_decisions_pillows2.png" alt="results"">
+							</td>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/final_image_pillows2.png" alt="results">
+							</td>
+						</tr>
+						<tr>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Initial Image</div>
+							</td>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Instance Assignments</div>
+							</td>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Output</div>
+							</td>
+						</tr>
+                </tbody>
+            </table>
+          </div>
+          <!-- Slide 5 -->
+          <div class="swiper-slide">
+            <table class="slide-table" width="100%" align="center">
+                <tbody>
+                    <tr>
+							<th colspan="3" width="90%" class="result-title" align="center"><color_obj>four friends</color_obj> dressed up for Halloween, <color_pos>from right to 
+							left</color_pos> they are dressed as <color_inst>a surgeon, a witch, a police officer, and a cowboy</color_inst></th>
+						</tr>
+						<tr>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/initial_image.png" alt="results">
+							</td>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/layout_w_decisions.png" alt="results"">
+							</td>
+							<td width="30">
+								<img align="center" src="./webpage_assets/images/results/final_image.png" alt="results">
+							</td>
+						</tr>
+						<tr>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Initial Image</div>
+							</td>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Instance Assignments</div>
+							</td>
+							<td width="33%">
+								<div align="center" class="video-label-slides">Output</div>
+							</td>
+						</tr>
+                </tbody>
+            </table>
+          </div>
+
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+    
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+        
+            <br></br>
+		
+    </section>
+	<div class="abstract-container has-text-justified">
+			<p class="has-text-justified">
+                We showcase sample results generated by our method. Results are also displayed along with the initial diffusion model input
+				which acts as a starting point for our method, and also the "instance assignments" which are derived from the initial image and guide the generation of the output image.
+            </p>
+	</div>
+
+    <!-- method -->
+    <section class="method-section" width="100%">
+        <div class="method-container">
+            <hr>
+            <h2 align="center">How does it work?</h2>
+		<br>
+            <div class="im_container has-text-justified" width="90%" align="center">
+                <img align="center" src="./webpage_assets/images/method2.png" alt="Overview" width="100%">
+            </div> 
+            <p class="has-text-justified">
+                <br>
+                🌍 Given a baseline diffusion model, we start by generating an initial (likely incorrect) image while saving cross attention maps and noisy latent codes for downstream tasks.<br></br>
+                💡 We then use the initial image along with the cross attention maps to produce an instance segmentation map, which maps all object instances in the original image.
+				The segmentation map and cross attention maps are then summerized in a json format file which details where each object instance is located, how much area it covers, 
+				and how likely it is to represent each word in the text prompt.<br></br>
+                🔍 The instance layout summary is then given to an LLM, which is tasked with producing a set of "Instance Instructions". These instructions define what each instance region 
+				will represent in the output image - either one of the objects defined in the text prompt or the background. We instruct the LLM to produce instance instructions that result in
+				a layout which is both <i>technically correct</i> and <i>aligns with the initial image as best as possible</i>.<br></br>
+                📋 The instance instructions are used to guide our "Assignment Conditioned Image Generation" stage, in which we use a set of losses and attention manipulation cokmponents to produce 
+				an image which accurately represents the instance layout and instructions while maintaining the visual quality of the initial image.
+            </p>
+        <div class="attn-grid-vid-container">
+            
+        </div>
+        </div>
+    </section>
+	
+<!--    Benchmark -->
+    <section class="benchmark-section" width="100%"> 
+        <div class="benchmark-container">
+            <hr> 
+            <h2 align="center">Benchmark</h2> 
+            <p class="has-text-justified"> 
+                We introduce <b><i>CompoundPrompts</b></i> - a new benchmark for evaluating text-to-image model's ability to generate images which accurately depict complex multi-object prompts. 
+				<b><i>CompoundPrompts</b></i> is made up of 60 unique prompts, each with nine variants defined by three difficulty tiers (A, B, C) and three "total object count" versions (1, 2, 3).<br><br>
+				Choose an example, a difficulty tier and an object count version to sample a <b><i>CompoundPrompts</b></i> prompt and its InstanceGen result. <br><br>
+            </p>
+	<table border="0" class="compoundprompts", align="center">
+		<tr>
+			<td colspan="6"><br></td>
+			<td style="text-align: center">
+			<div style="text-align: center; min-height: 80px; width: 680px;  vertical-align: center;">
+			<h3 id="titleDisplay" class="result-title">Title will appear here</h3>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="6"><h3 style="width: 220px;">Example</h3></td>
+			<td rowspan="7">
+			<div style="text-align: center;">
+				<img id="previewImage" src="/webpage_assets/images/compoundprompts/1/A/1.png" alt="Preview Image" align="center">
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+			<div class="button-group">
+				<button class="cp-button" data-group="example" data-value="1">
+					<span class="example-button">
+						<img src="./webpage_assets/images/cp_meerkat_icon.jpg" class="example-pic" alt="meerkats" width="90px">
+					</span>
+				</button>
+			</div>
+			</td>
+			<td colspan="3">
+			<div class="button-group">
+				<button class="cp-button" data-group="example" data-value="2">
+					<span class="example-button">
+						<img src="./webpage_assets/images/cp_muffin_icon.jpg" class="example-pic" alt="muffins" width="90px">
+					</span>
+				</button>
+			</div>
+			</td>
+			<tr>
+				<td colspan="6"><h3>Difficulty Tier</h3></td>
+			</tr>
+			<tr>
+			<td colspan="2">
+				<div class="button-group">
+				<button class="cp-button" data-group="difficulty" data-value="A" >A</button>
+				</div>
+			</td>
+			<td colspan="2">
+				<div class="button-group">
+				<button class="cp-button" data-group="difficulty" data-value="B">B</button>
+				</div>
+			</td>	
+			<td colspan="2">
+				<div class="button-group">
+				<button class="cp-button" data-group="difficulty" data-value="C">C</button>
+				</div>
+			</td>				
+			</tr>
+			<tr>
+				<td colspan="6"><h3>Object count Tier</h3></td>
+			</tr>
+			<tr>
+			<td colspan="2">
+				<div class="button-group">
+				<button class="cp-button" data-group="count" data-value="1">1</button>
+				</div>
+			</td>
+			<td colspan="2">
+				<div class="button-group">
+				<button class="cp-button" data-group="count" data-value="2">2</button>
+				</div>
+			</td>	
+			<td colspan="2">
+				<div class="button-group">
+				<button class="cp-button" data-group="count" data-value="3">3</button>
+				</div>
+			</td>				
+			</tr>
+			<tr>
+				<td colspan="6"><br><br><br><br><br><br></td>
+			</tr>
+		</tr>
+	</table>
+        </div> 
+    </section> 
+
+<!--     BibTex-->
+    <section class="bib-section" width="100%">
+        <div class="bib-container">
+            <hr>
+            <h2 align="center">BibTeX</h2>
+            <div class="code-container" align="left">
+                <code>
+                  @misc{sella2024spicee, <br>
+                &emsp;   &emsp; title={Spice-E : Structural Priors in 3D Diffusion using Cross-Entity Attention}, <br>
+                &emsp;   &emsp; author={Etai Sella and Gal Fiebelman and Noam Atia and Hadar Averbuch-Elor}, <br>
+                &emsp;   &emsp; year={2024}, <br>
+                &emsp;   &emsp; eprint={2311.17834},<br>
+                &emsp;   &emsp; archivePrefix={arXiv},<br>
+                &emsp;   &emsp; primaryClass={cs.CV}<br>
+
+                  }
+                </code>
+            </div>
+        </div>
+    </section>
+
+<!--    Acknowledgements -->
+    <section class="ack-section" width="100%"> 
+        <div class="ack-container">
+            <hr> 
+            <h2 align="center">Acknowledgements</h2> 
+            <p> 
+                We thank Peter Hedman, Ron Mokadi, Daniel Garibi, Itai Lang and Or Patashnik for helpful discussions. <br>
+				This work was supported by the Israel Science Foundation (grant no. 2510/23) and by the Alon Scholarship.
+            </p> 
+        </div> 
+    </section> 
+
+  <p><br>
+  </p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+
+</div>
+<script>
+const swiper = new Swiper('.swiper', {
+    autoplay: {
+    delay: 6000,
+    },
+    // Optional parameters
+    speed: 1000,
+    loop: true,
+  
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
+
+<script>
+    let currentVideo = "video3";
+    let currentSuffix = "";
+
+    function playVideo(newVideo, newSuffix) {
+        if (currentVideo === newVideo && currentSuffix === newSuffix) return;
+
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        currentTime = videoPlayer.currentTime;
+        videoPlayer.src = `./webpage_assets/videos/interactive/${newVideo}${newSuffix}.mp4`;
+        videoPlayer.addEventListener('loadedmetadata', function () {
+            videoPlayer.currentTime = currentTime;
+            videoPlayer.removeEventListener('loadedmetadata', arguments.callee);
+
+            // After changing the video source, set the fixed height
+            setFixedHeight();
+        });
+        videoPlayer.play();
+        currentVideo = newVideo;
+        currentSuffix = newSuffix;
+    }
+
+    function switchVideo(newSuffix) {
+        if (currentSuffix === newSuffix) return;
+        playVideo(currentVideo, newSuffix);
+    }
+
+    // Function to set a fixed height for the row after changing the video source
+    function setFixedHeight() {
+        const videoRow = document.getElementById('videoRow');
+        videoRow.style.height = `${videoRow.offsetHeight}px`;
+    }
+</script>
+
+ <script>
+    const state = {
+      example: '1',
+      difficulty: 'A',
+      count: '1'
+    };
+
+    const titleMap = {
+      '1-A-1': 'two meerkats standing watch in the savannah',
+      '1-A-2': 'four meerkats standing watch in the savannah',
+      '1-A-3': 'six meerkats standing watch in the savannah',
+      '1-B-1': 'two meerkats standing watch in the savannah, only one of them is yawning',
+      '1-B-2': 'four meerkats standing watch in the savannah, only one of them is yawning',
+      '1-B-3': 'six meerkats standing watch in the savannah, only one of them is yawning',
+      '1-C-1': 'two meerkats standing watch in the savannah, only the second meerkat from the right is yawning',
+      '1-C-2': 'four meerkats standing watch in the savannah, only the second meerkat from the right is yawning',
+      '1-C-3': 'six meerkats standing watch in the savannah, only the second meerkat from the right is yawning',
+      '2-A-1': 'a tray with two muffins and one piece of cake on it',
+      '2-A-2': 'a tray with two muffins, an eclaire and one piece of cake on it',
+      '2-A-3': 'a tray with three muffins, two eclaires and one piece of cake on it',
+      '2-B-1': 'a tray with two muffins and one piece of cake on it, one of the muffins is blueberry, the other is chocolate',
+      '2-B-2': 'a tray with two muffins, an eclaire and one piece of cake on it, one of the muffins is blueberry, the others are chocolate',
+      '2-B-3': 'a tray with three muffins, two eclaires and one piece of cake on it, one of the muffins is blueberry, the others are chocolate',
+      '2-C-1': 'a tray with two muffins and one piece of cake on it, the muffin in the top left corner is blueberry, the other muffin is chocolate',
+      '2-C-2': 'a tray with two muffins, an eclaire and one piece of cake on it, the muffin in the top left corner is blueberry, the other muffins are chocolate',
+      '2-C-3': 'a tray with three muffins, two eclaires and one piece of cake on it, the muffin in the top left corner is blueberry, the other muffins are chocolate'
+    };
+
+    const buttons = document.querySelectorAll('.cp-button');
+    const image = document.getElementById('previewImage');
+    const title = document.getElementById('titleDisplay');
+
+    function updateDisplay() {
+      const key = `${state.example}-${state.difficulty}-${state.count}`;
+      image.src = `./webpage_assets/images/compoundprompts/${state.example}/${state.difficulty}/${state.count}.jpg`;
+      title.textContent = titleMap[key] || 'Unknown Selection';
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', function () {
+        const group = this.getAttribute('data-group');
+        const value = this.getAttribute('data-value');
+        state[group] = value;
+
+        // Update button highlighting
+        document.querySelectorAll(`[data-group="${group}"]`).forEach(btn => {
+          btn.classList.remove('active');
+        });
+        this.classList.add('active');
+
+        updateDisplay();
+      });
+    });
+
+    // Initialize with default
+    document.querySelector('[data-group="example"][data-value="1"]').click();
+    document.querySelector('[data-group="difficulty"][data-value="A"]').click();
+    document.querySelector('[data-group="count"][data-value="1"]').click();
+  </script>
+
+</body></html>
